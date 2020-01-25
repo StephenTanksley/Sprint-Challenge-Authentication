@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const authModel = require('../auth/authModel')
 
 const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
@@ -22,6 +23,7 @@ server.get('/', (req, res, next) => {
 })
 
 server.use((err, req, res, next) => {
+    console.log("error: ", err)
     res.status(500).json({
         message: "Something went horribly wrong."
     })
