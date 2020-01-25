@@ -15,4 +15,17 @@ server.use(express.json());
 server.use('/api/auth', authRouter);
 server.use('/api/jokes', authenticate, jokesRouter);
 
+server.get('/', (req, res, next) => {
+    res.status(200).json({
+        message: "Jokes API."
+    })
+})
+
+server.use((err, req, res, next) => {
+    res.status(500).json({
+        message: "Something went horribly wrong."
+    })
+})
+
+
 module.exports = server;
