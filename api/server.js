@@ -23,7 +23,7 @@ server.get('/', (req, res, next) => {
 })
 
 server.use((err, req, res, next) => {
-    console.log("error: ", err)
+    console.log(err)
     res.status(500).json({
         message: "Something went horribly wrong."
     })
