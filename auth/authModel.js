@@ -20,7 +20,7 @@ const getById = (id) => {
 }
 
 const add = async (user) => {
-    user.password = await bcrypt.hash(user.password, 14)
+    user.password = await bcrypt.hash(user.password, 12)
     const [id] = await db('users')
         .insert(user)
     return getById(id)

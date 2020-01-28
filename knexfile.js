@@ -11,11 +11,13 @@ const sqlite = {
 }
 
 module.exports = {
+
   dev: {
     ...sqlite,
     connection: { 
       filename: './database/auth.db3' },
   },
+  
   test: {
     ...sqlite,
     connection: { 

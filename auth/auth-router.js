@@ -23,6 +23,7 @@ router.post('/register', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
 const generateToken = (user) => {
+
   const payload = {
     subject: user.id,
     username: user.username,
@@ -37,7 +38,7 @@ const generateToken = (user) => {
 
 try {
     const { username, password } = req.body
-    const user = await authModel.getBy({username})
+    const user = await authModel.getBy({username}).first()
     const passwordValid = await bcrypt.compare(password, user.password)
   
     if(user && passwordValid) {
@@ -58,6 +59,5 @@ try {
     next(error)
   }
 });
-
 
 module.exports = router;

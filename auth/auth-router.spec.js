@@ -10,6 +10,7 @@ describe('auth router', () => {
 
     //REGISTRATION
     test('new user', async () => {
+        jest.setTimeout(10000)
         const res = await request(server).post('/api/auth/register')
             .send({ username: "StephenT", password: "superpassword1"})
         expect(res.status).toBe(201)
@@ -17,6 +18,7 @@ describe('auth router', () => {
     }) 
 
     test('new user failed', async () => {
+        jest.setTimeout(10000)
         const res = await request(server).post('/api/auth/register')
             .send({ username: "StephenT", password: ""})
         expect(res.status).toBe(500)
@@ -26,13 +28,15 @@ describe('auth router', () => {
 
     //LOGIN
     test('correct login', async () => {
+        jest.setTimeout(10000)
         const res = await request(server).post('/api/auth/login')
-            .send({ username: "StephenTanksley", password: "superpassword5" })
+            .send({ username: "StephenTanksley12", password: "superpassword5" })
         expect(res.status).toBe(200)
         // expect(res.body.message).toMatch(/welcome/i)
     })
 
     test('incorrect login', async () => {
+        jest.setTimeout(10000)
         const res = await request(server).post('/api/auth/login')
             .send({ username: "Kima", password: "donutt"})
         expect(res.status).toBe(401)

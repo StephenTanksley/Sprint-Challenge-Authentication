@@ -1,10 +1,11 @@
 const bcrypt = require('bcryptjs')
-const hash = async (password) => bcrypt.hash(password, 14)
+const hash = async (password) => bcrypt.hash(password, 3)
 
 exports.seed = async (knex) => {
+  // await knex('users').truncate()
   await knex('users').insert([
     {
-      username: 'StephenTanksley',
+      username: 'StephenTanksley12',
       password: `${await hash('superpassword5')}`
     },
     {
